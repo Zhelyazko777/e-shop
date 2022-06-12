@@ -1,0 +1,24 @@
+@import "src/variables";
+
+.table {
+  width: 100%;
+
+  &__head {
+    background-color: $color-grey-light;
+  }
+  &__heading {
+    padding: 3% 0;
+    font-weight: $font-weight-bold;
+    font-size: 1rem;
+  }
+  &__row {
+    border-bottom: 1px solid black;
+  }
+  &__row-item {
+    text-align: center;
+    padding: 5px 20px;
+    white-space: nowrap;
+    font-weight: $font-weight-light;
+    font-size: 0.9rem;
+  }
+}

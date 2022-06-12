@@ -1,0 +1,34 @@
+<app-main-layout title="Admin Dashboard">
+  <div class="widgets">
+    <div class="widget">
+      <app-dashboard-widget title="Top 10 Sellers">
+        <ng-container *ngIf="topSellersLabels$ | async as topSellersLabels">
+          <ng-container *ngIf="topSellersScores$ | async as topSellersScores">
+            <app-pie-chart
+              [labels]="topSellersLabels"
+              [scores]="topSellersScores"
+            ></app-pie-chart>
+          </ng-container>
+        </ng-container>
+      </app-dashboard-widget>
+    </div>
+    <div class="widget">
+      <app-dashboard-widget title="Top 10 Buyers">
+        <ng-container *ngIf="topBuyersLabels$ | async as topBuyersLabels">
+          <ng-container *ngIf="topBuyersScores$ | async as topBuyersScores">
+            <app-pie-chart
+              [labels]="topBuyersLabels"
+              [scores]="topBuyersScores"
+            ></app-pie-chart>
+          </ng-container>
+        </ng-container>
+      </app-dashboard-widget>
+    </div>
+    <div class="widget" *ngIf="topSoldProducts$ | async as topSoldProducts; else loading">
+      <app-dashboard-widget title="Top 10 Items Sold Today">
+        <app-table [columns]="topSoldProductsColumns" [rows]="topSoldProducts"></app-table>
+      </app-dashboard-widget>
+    </div>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</app-main-layout>

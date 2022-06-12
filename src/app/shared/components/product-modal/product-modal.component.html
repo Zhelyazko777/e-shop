@@ -1,0 +1,24 @@
+<div class="overlay" *ngIf="product">
+  <div class="modal">
+    <img
+      (load)="onImageLoaded()"
+      [alt]="product.name | productImageAlt"
+      [class]="!hideImageLoader ? 'modal__image--hide' : ''"
+      src="https://random.imagecdn.app/300/450"
+      width="300"
+      height="450"
+      class="modal__image"
+    >
+    <div *ngIf="!hideImageLoader" class="modal__loading-bar">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="modal__body">
+      <span (click)="onCloseCLick()" class="modal__close">x</span>
+      <span class="modal__title">{{product.name}}</span>
+      <span class="modal__price">
+        <span class="modal__currency">$</span>
+        <span class="modal__price-number">{{product.price}}</span>
+      </span>
+    </div>
+  </div>
+</div>

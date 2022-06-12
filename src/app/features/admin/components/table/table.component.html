@@ -1,0 +1,10 @@
+<table class="table" cellspacing="0">
+  <tr class="table__head">
+    <th *ngFor="let column of columns" class="table__heading">{{column}}</th>
+  </tr>
+  <tr *ngFor="let row of rows" class="table__row">
+    <ng-container *ngFor="let column of columns; let i = index">
+      <td class="table__row-item">{{row[i]}}</td>
+    </ng-container>
+  </tr>
+</table>

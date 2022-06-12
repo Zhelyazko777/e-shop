@@ -1,0 +1,30 @@
+<app-main-layout title="Seller Dashboard">
+  <div class="widgets">
+    <div class="widget">
+      <app-dashboard-widget title="Your Top 10 Sold Products">
+        <ng-container *ngIf="topSoldProductsLabels$ | async as topSoldProductsLabels">
+          <ng-container *ngIf="topSoldProductsScores$ | async as topSoldProductsScores">
+            <app-pie-chart
+              [labels]="topSoldProductsLabels"
+              [scores]="topSoldProductsScores"
+            ></app-pie-chart>
+          </ng-container>
+        </ng-container>
+      </app-dashboard-widget>
+    </div>
+    <div class="widget">
+      <app-dashboard-widget title="Your Products">
+        <ng-container *ngIf="allSellerProductsPaginated$ | async as allSellerProductsPaginated">
+          <app-products-list
+            (nextArrowClick)="onNextPaginationarrowClick()"
+            (backArrowClick)="onBackPaginationArrowClick()"
+            [products]="allSellerProductsPaginated.items"
+            [currentPage]="allSellerProductsPage"
+            [numberOfPages]="allSellerProductsPaginated.numberOfPages"
+          ></app-products-list>
+        </ng-container>
+      </app-dashboard-widget>
+    </div>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</app-main-layout>

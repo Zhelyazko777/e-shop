@@ -1,0 +1,18 @@
+<app-main-layout title="Buyer Dashboard">
+  <div class="widgets">
+    <div class="widget">
+      <app-dashboard-widget title="Bought Products">
+        <ng-container *ngIf="allBoughtProductsPaginated$ | async as allBoughtProductsPaginated">
+          <app-products-list
+            (nextArrowClick)="onNextPaginationarrowClick()"
+            (backArrowClick)="onBackPaginationArrowClick()"
+            [products]="allBoughtProductsPaginated.items"
+            [currentPage]="allBoughtProductsPage"
+            [numberOfPages]="allBoughtProductsPaginated.numberOfPages"
+          ></app-products-list>
+        </ng-container>
+      </app-dashboard-widget>
+    </div>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</app-main-layout>

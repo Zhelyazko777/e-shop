@@ -1,0 +1,16 @@
+<div class="page">
+  <div class="login-box">
+    <form (ngSubmit)="onFormSubmit()" [formGroup]="form" class="login-box__form">
+      <input formControlName="username" type="text" placeholder="Username" class="login-box__input">
+      <input formControlName="password" type="password" placeholder="Password" class="login-box__input">
+      <button
+        type="submit"
+        class="login-box__button"
+        [class]="this.form.invalid ? 'login-box__button--disabled' : ''"
+        [disabled]="this.form.invalid">
+          Login
+      </button>
+      <p *ngIf="showErrorMessage" class="login-box__error">Wrong credentials...</p>
+    </form>
+  </div>
+</div>

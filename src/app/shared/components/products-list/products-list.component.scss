@@ -1,0 +1,83 @@
+@import "src/_variables.scss";
+
+.products {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.product {
+  display: flex;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background-color: $color-grey-lighter;
+  cursor: pointer;
+  transition: all 0.6s;
+
+  &:hover {
+    background-color: $color-grey-light;
+  }
+  &__image {
+    width: 115px;
+
+    &--hide {
+      display: none;
+    }
+  }
+  &__loading-bar {
+    width: 115px;
+    height: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+  }
+  &__title {
+    margin: 0 0 15px 0;
+    font-weight: $font-weight-reqular;
+  }
+  &__price {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__currency {
+    font-size: 1rem;
+    margin-right: 3px;
+    margin-top: 0.4rem;
+  }
+  &__price-number {
+    font-size: 1.7rem;
+    font-weight: $font-weight-bolder;
+  }
+}
+
+.paging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  &__arrow {
+    font-size: 1.2rem;
+    font-weight: $font-weight-lighter;
+    cursor: pointer;
+
+    &--disabled {
+      color: $color-grey;
+      pointer-events: none;
+    }
+    &-left {
+      margin-right: 10px;
+    }
+    &-right {
+      margin-left: 10px;
+    }
+  }
+  &__page-number {
+    font-size: 1.2rem;
+  }
+}

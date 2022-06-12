@@ -1,0 +1,40 @@
+<div class="products">
+  <div *ngFor="let product of products" (click)="onItemClick(product.id)" class="product">
+    <img
+      (load)="onImageLoaded()"
+      [alt]="product.name | productImageAlt"
+      [class]="!hideImageLoader ? 'product__image--hide' : ''"
+      src="https://random.imagecdn.app/115/115"
+      width="115"
+      height="115"
+      class="product__image"
+    >
+    <div *ngIf="!hideImageLoader" class="product__loading-bar">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="product__info">
+      <h3 class="product__title">{{product.name}}</h3>
+      <span class="product__price">
+        <span class="product__currency">$</span>
+        <span class="product__price-number">{{product.price}}</span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="paging">
+  <span
+    (click)="onPageBackArrowClick()"
+    [class]="isBackArrowDisabled ? 'paging__arrow--disabled' : ''"
+    class="paging__arrow paging__arrow-left" >
+    <
+  </span>
+  <span class="paging__page-number">{{currentPage}}</span>
+  <span
+    (click)="onNextPageArrowClick()"
+    [class]="isNextArrowDisabled ? 'paging__arrow--disabled' : ''"
+    class="paging__arrow paging__arrow-right" >
+      >
+  </span>
+</div>
+
+<app-product-modal *ngIf="selectedProduct" [product]="selectedProduct" (modalClosed)="onModalCloseClick()"></app-product-modal>
